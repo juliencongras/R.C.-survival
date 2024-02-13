@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjis58csiw2r5"]
+
+[ext_resource type="Script" path="res://collectible/battery.gd" id="1_w2w1y"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_1xwx7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c5l4v"]
+radius = 10.0499
+
+[node name="Battery" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_w2w1y")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+scale = Vector2(19.8974, 19.8974)
+mesh = SubResource("SphereMesh_1xwx7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_c5l4v")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
