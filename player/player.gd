@@ -5,9 +5,11 @@ var MAX_SPEED = 500
 var MIN_SPEED = -200
 var ACCELERATION = 20
 var rotation_speed = 0.1
+@onready var car_sprite = $Sprite
 
 func _physics_process(delta):
 	velocity = Vector2(0, -1).rotated(rotation) * SPEED
+	car_sprite.play("default")
 	
 	if SPEED > MAX_SPEED:
 		SPEED = MAX_SPEED
@@ -18,8 +20,10 @@ func _physics_process(delta):
 	if SPEED != 0:
 		if Input.is_action_pressed("Left"):
 			rotate(-rotation_speed)
+			car_sprite.play("left")
 		elif Input.is_action_pressed("Right"):
 			rotate(rotation_speed)
+			car_sprite.play("right")
 	
 	if Input.is_action_pressed("Accelerate"):
 		SPEED += ACCELERATION

@@ -1,7 +1,60 @@
-[gd_scene load_steps=4 format=3 uid="uid://cywh6r3nsdt8t"]
+[gd_scene load_steps=10 format=3 uid="uid://cywh6r3nsdt8t"]
 
-[ext_resource type="Texture2D" uid="uid://bi2ck75vykrtx" path="res://icon.svg" id="1_2b7df"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_jkdq2"]
+[ext_resource type="Texture2D" uid="uid://denuhpespy46u" path="res://player/Car.png" id="2_l1v7p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jnt54"]
+atlas = ExtResource("2_l1v7p")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hvjg"]
+atlas = ExtResource("2_l1v7p")
+region = Rect2(0, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcsup"]
+atlas = ExtResource("2_l1v7p")
+region = Rect2(16, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdqiu"]
+atlas = ExtResource("2_l1v7p")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_neur3"]
+atlas = ExtResource("2_l1v7p")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ma3rg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jnt54")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hvjg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcsup")
+}],
+"loop": false,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdqiu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_neur3")
+}],
+"loop": false,
+"name": &"right",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p1oyp"]
 radius = 30.1496
@@ -11,9 +64,10 @@ collision_mask = 4
 motion_mode = 1
 script = ExtResource("1_jkdq2")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_2b7df")
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ma3rg")
+animation = &"left"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_p1oyp")
