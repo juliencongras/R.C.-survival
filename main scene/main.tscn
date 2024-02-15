@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://ccsmoxf6ttutt"]
+[gd_scene load_steps=8 format=3 uid="uid://ccsmoxf6ttutt"]
 
 [ext_resource type="Script" path="res://main scene/main.gd" id="1_qtmnp"]
 [ext_resource type="PackedScene" uid="uid://cywh6r3nsdt8t" path="res://player/player.tscn" id="1_vf2bk"]
 [ext_resource type="PackedScene" uid="uid://cjis58csiw2r5" path="res://collectible/battery.tscn" id="3_ma4gb"]
+[ext_resource type="Texture2D" uid="uid://c6ln1c5wxgon2" path="res://bricks.png" id="4_urhnv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_57qsd"]
-size = Vector2(34, 666)
+size = Vector2(66, 666)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3k503"]
 size = Vector2(1189, 31)
@@ -26,19 +27,44 @@ position = Vector2(505, 274)
 position = Vector2(13, 324)
 collision_layer = 4
 
+[node name="Bricks" type="Sprite2D" parent="Walls/LeftWall"]
+texture_repeat = 2
+position = Vector2(16, 0)
+rotation = 1.5708
+texture = ExtResource("4_urhnv")
+region_enabled = true
+region_rect = Rect2(0, 0, 598, 64)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/LeftWall"]
+position = Vector2(16, 0)
 shape = SubResource("RectangleShape2D_57qsd")
 
 [node name="RightWall" type="StaticBody2D" parent="Walls"]
 position = Vector2(1141, 324)
 collision_layer = 4
 
+[node name="Bricks" type="Sprite2D" parent="Walls/RightWall"]
+texture_repeat = 2
+position = Vector2(-16, 0)
+rotation = 1.5708
+texture = ExtResource("4_urhnv")
+region_enabled = true
+region_rect = Rect2(0, 0, 598, 64)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/RightWall"]
+position = Vector2(-15, 0)
 shape = SubResource("RectangleShape2D_57qsd")
 
 [node name="DownWall" type="StaticBody2D" parent="Walls"]
 position = Vector2(579, 6)
 collision_layer = 4
+
+[node name="Bricks" type="Sprite2D" parent="Walls/DownWall"]
+texture_repeat = 2
+position = Vector2(18, 649)
+texture = ExtResource("4_urhnv")
+region_enabled = true
+region_rect = Rect2(0, 0, 1200, 64)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/DownWall"]
 shape = SubResource("RectangleShape2D_3k503")
@@ -46,6 +72,14 @@ shape = SubResource("RectangleShape2D_3k503")
 [node name="UpWall" type="StaticBody2D" parent="Walls"]
 position = Vector2(579, 641)
 collision_layer = 4
+
+[node name="Bricks" type="Sprite2D" parent="Walls/UpWall"]
+texture_repeat = 2
+position = Vector2(-19, -647)
+rotation = 3.14159
+texture = ExtResource("4_urhnv")
+region_enabled = true
+region_rect = Rect2(0, 0, 1200, 64)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/UpWall"]
 shape = SubResource("RectangleShape2D_3k503")
